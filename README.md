@@ -56,11 +56,11 @@ Background evolution is computed based on iteration method using the following p
   - `parallel`: If `true`, parallelization is implemented in the MCMC calculation.
 
 ### Role of each python file:
-* const.py: definition of units and constants
-* mdd.py: calculation of cosmological background evolution. 
-* likelihoods.py: calculation of likelihood function incorporating recent BAO (arXiv:1607.03155, arXiv:1801.03062, arXiv:1702.00176), direct Hubble measurement (arXiv:2001.03624) and CMB \Theta_* (arXiv:1807.06209).
-* mcmc.py: MCMC analysis based on Affine Invariant MCMC sampler (emcee). Parallelization is supported based on the multiprocessing python module.
-* driver.py: main function
+* `const.py`: Definition of units and constants
+* `mdd.py`: Calculation of cosmological background evolution. 
+* `likelihoods.py`: Calculation of likelihood function incorporating recent BAO (arXiv:1607.03155, arXiv:1801.03062, arXiv:1702.00176), direct Hubble measurement (arXiv:2001.03624) and CMB \Theta_* (arXiv:1807.06209).
+* `mcmc.py`: MCMC analysis based on Affine Invariant MCMC sampler (emcee). Parallelization is supported based on the multiprocessing python module.
+* `driver.py`: Main function.
 
 ## Stage 2: Postprocessing
 
