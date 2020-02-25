@@ -1,7 +1,7 @@
 # Description
 Code for cosmological evolution with decaying dark matter and MCMC parameter estimation based on recent cosmographic data.
 
-# Prerequisites (vesion number usued in development)
+# Prerequisites (vesion usued in development)
 * Python3 (3.6, 3.7)
 * SWIG (3.0.12)
 * C compiler (gcc Apple LLVM version 10.0.1/Intel icc 18.0.1)
