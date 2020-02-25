@@ -82,5 +82,6 @@ This analyses MCMC chain(s) produced in Step 1 and obtain parameter constraints 
 * Neutrinos are assumed to consist of three mass eigenstates.
 * 4He abundance Yp(\omega_b, N_\nu) is fitted with BBN.dat taken from CLASS which are originally obtained using the PArthENoPE code (http://parthenope.na.infn.it).
 * Recombination history is computed based on HyReC (https://pages.jh.edu/~yalihai1/hyrec/hyrec.html).
-* BBN calculation is 
-* Restarting functionarity is for the time being not supported and will be implemented in future.
+
+#To-do-list 
+[ ] Restarting functionarity
