@@ -40,14 +40,16 @@ Basic usage:
   - `neutrino_hierarchy`: Flag for neutrino mass hierarchy. 1 for normal, 0 for degenerate and -1 for inverted ones.
 * [DDM SETUP]
 Background evolution is computed based on iteration method using the following parameters.
-  - `num_a`: Number of scale factor bin. Empirically 30 is recommended.  
+  - `num_a`: Number of scale factor bin. Empirically `30` is recommended.  
   - `max_it`: Maximum iteration number. This is not relevant because usually convergence is achieved within one iteration.
-  - `tol`: Tolerance parameter for the error from the true evolution measured by the current energy density of massless decay-product. Setting to 1e-10 works.
+  - `tol`: Tolerance parameter for the error from the true evolution measured by the current energy density of massless decay-product. Setting to `1e-10` works.
 * [LIKELIHOODS]
-  - `use_BAO`,`use_H0`, `use_CMB`: flags for whether data is incorporated in likelihood calculation.
+  - `use_BAO`,`use_H0`, `use_CMB`: Flags for whether data is incorporated in likelihood calculation. They should be either `true` of `false`
 * [MCMC]
-
-
+  - `ob`, `odm`, `ol`, `decay_rate`, `mratio`, `nnu`, `mnu`: When each parameter is varied in the parameter estimation, three numbers should be given in order: lower limit, upper limit, initial fluctuations. When left as blank, corresponding parameter is fixed to the fiducial value.
+  - `nwalkers`: Number of walkers in affine invariant MCMC sampler. This should be at least twice the number of varied parameters.
+  - `nsteps`: Number of steps for MCMC analysis
+  - `parallel`: If `true`, parallelization is implemented in the MCMC calculation.
 
 ### roles of python files:
 * const.py: definition of units and constants
