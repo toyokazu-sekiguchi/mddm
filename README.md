@@ -79,7 +79,6 @@ This analyses MCMC chain(s) produced in Step 1 and obtain parameter constraints 
   - `chainlabels`: Array of chain label(s). They are adopted in plotting. Comma separates items.
   
 # Notes
-## Cosmological assumptions
 * Flatness is assumed.
 * Neutrinos are assumed to consist of three mass eigenstates.
 * 4He abundance $Y_p(\omega_b, N_\nu)$ is fitted with a look-up table in `BBN.dat`, whicha is taken from CLASS, which are originally obtained using the PArthENoPE code (http://parthenope.na.infn.it).
