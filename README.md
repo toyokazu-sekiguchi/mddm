@@ -43,6 +43,7 @@ This first calculates evolution in the fiducial model and MCMC run afterwords. M
   - `mnu`: Sum of neutrino mass in units of eV.
   - `neutrino_hierarchy`: Flag for neutrino mass hierarchy. 1 for normal, 0 for degenerate and -1 for inverted ones.
 * [DDM SETUP]
+
 Background evolution is computed based on iteration method using the following parameters.
   - `num_a`: Number of scale factor bin. Empirically `30` is recommended.  
   - `max_it`: Maximum iteration number. This is not relevant because usually convergence is achieved within one iteration.
