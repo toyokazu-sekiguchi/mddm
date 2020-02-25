@@ -28,13 +28,14 @@ There are two stages in the analysis: MCMC and postprocessing.
 Basic usage:
 `python3 driver.py test.ini`
 
-`test.ini` specifies a variety of parameters and consists of Five sections:
-1. [OUTPUT]
-** `root`: parameter
-2. [FIDUCIAL COSMOLOGY]
-3. [DDM SETUP]
-4. [LIKELIHOODS]
-5. [MCMC]
+`test.ini` specifies a variety of parameters and consists of five sections:
+* [OUTPUT]
+ - `root`: chacters specifying output prefix.
+* [FIDUCIAL COSMOLOGY]
+ - `ob`, `odm`, `ol`: density parameters $\Omega_ih^2$ of baryon, dark matter 
+* [DDM SETUP]
+* [LIKELIHOODS]
+* [MCMC]
 
 
 
