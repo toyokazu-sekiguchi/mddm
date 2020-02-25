@@ -16,7 +16,7 @@ Code for cosmological evolution with decaying dark matter and MCMC parameter est
 
 # Installation
 Compilation is required in order to build a python interface for HyRec (written in C).
-1. Git clone source file via `https://github.com/toyokazu-sekiguchi/mddm.git`.
+1. Git clone source file via `git clone https://github.com/toyokazu-sekiguchi/mddm.git`.
 2. Go to `mddm/HyRec`.
 3. Edit `INC_PY` and `LIB_PY` in `Makefile` appropriately, so that correct `Python.h` and `libpython3.*` are incorporated. Then `Make pyrec`.
 4. Go back to the parent directory. 
