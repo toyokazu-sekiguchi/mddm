@@ -30,21 +30,21 @@ Basic usage:
 
 `test.ini` specifies a variety of parameters and consists of five sections:
 * [OUTPUT]
- - `root`: chacters specifying output prefix.
+  - `root`: Chacters specifying output prefix.
 * [FIDUCIAL COSMOLOGY]
- - `ob`, `odm`, `ol`: density parameters $\Omega_i h^2$ of baryon, dark matter (assuming no decay) and cosmological constant. Note that actual value of $\Omega_{dm} h^2$ and henceforth $h = \sqrt{\sum_i \Omega_i h^2}$ differs from the input value when decay rate is finite.
- - `decay_rate`: decay rate of decaying dark matter in units of 1/Gyr.
- - `mratio`: mass ratio of massive decay-product to decaying particle $m_1/m_0$.
- - `nnu`: effective number of neutrinos. The total number of neutrinos are enhanced by this factor (temperature is fixed to the standard value i.e. $T_\nu = (4/11)^{1/3} T_\gamma$.
- - `mnu`: sum of neutrino mass in units of eV.
- - `neutrino_hierarchy`: flag for neutrino mass hierarchy. 1 for normal, 0 for degenerate and -1 for inverted ones.
+  - `ob`, `odm`, `ol`: Density parameters $\Omega_i h^2$ of baryon, dark matter (assuming no decay) and cosmological constant. Note that actual value of $\Omega_{dm} h^2$ and henceforth $h = \sqrt{\sum_i \Omega_i h^2}$ differs from the input value when decay rate is finite.
+  - `decay_rate`: Decay rate of decaying dark matter in units of 1/Gyr.
+  - `mratio`: Mass ratio of massive decay-product to decaying particle $m_1/m_0$.
+  - `nnu`: Effective number of neutrinos. The total number of neutrinos are enhanced by this factor (temperature is fixed to the standard value i.e. $T_\nu = (4/11)^{1/3} T_\gamma$.
+  - `mnu`: Sum of neutrino mass in units of eV.
+  - `neutrino_hierarchy`: Flag for neutrino mass hierarchy. 1 for normal, 0 for degenerate and -1 for inverted ones.
 * [DDM SETUP]
- -
+Background evolution is computed based on iteration method using the following parameters.
+  - `num_a`: Number of scale factor bin. Empirically 30 is recommended.  
+  - `max_it`: Maximum iteration number. This is not relevant because usually convergence is achieved within one iteration.
+  - `tol`: Tolerance parameter for the error from the true evolution measured by the current energy density of massless decay-product. Setting to 1e-10 works.
 * [LIKELIHOODS]
- - a
- - `ob`, `odm`, `ol`: density parameters $\Omega_ih^2$ of baryon, dark matter and cosmological constant.a
- - `ob`, `odm`, `ol`: density parameters $\Omega_ih^2$ of baryon, dark matter and cosmological constant.a
- - `ob`, `odm`, `ol`: density parameters $\Omega_ih^2$ of baryon, dark matter and cosmological constant.
+  - `use_BAO`,`use_H0`, `use_CMB`: flags for whether data is incorporated in likelihood calculation.
 * [MCMC]
 
 
