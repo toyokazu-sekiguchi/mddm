@@ -6,10 +6,6 @@ LDFLAG = -O2
 
 INC_PY = -I/usr/local/Cellar/python/3.7.6_1/Frameworks/Python.framework/Versions/3.7/include/python3.7m
 LIB_PY = -L/usr/local/Cellar/python/3.7.6_1/Frameworks/Python.framework/Versions/3.7/lib -lpython3.7m
-#-I/anaconda3/include/python3.6m
-#-L/anaconda3/lib -lpython3.6m
-#-Wunused-command-line-argument
-#-I/anaconda3/include -arch x86_64
 
 %.o: %.c 
 	$(CC) $(CCFLAG) -c $*.c -o $*.o
