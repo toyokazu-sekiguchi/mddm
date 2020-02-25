@@ -22,18 +22,21 @@ Compilation is required in order to build a python interface for HyRec (written 
 4. Go back to the parent directory. 
 
 # Usage
-There are two stages in the analysis: MCMC and 
+There are two stages in the analysis: MCMC and postprocessing.
 
 ## stage 1: MCMC (including calculation for fiducial model)
 Basic usage:
 `python3 driver.py test.ini`
 
-`test.ini` specifies a variety of parameters and consists of three sections:
+`test.ini` specifies a variety of parameters and consists of Five sections:
 1. [OUTPUT]
+** `root`: parameter
 2. [FIDUCIAL COSMOLOGY]
 3. [DDM SETUP]
 4. [LIKELIHOODS]
 5. [MCMC]
+
+
 
 ### roles of python files:
 * const.py: definition of units and constants
