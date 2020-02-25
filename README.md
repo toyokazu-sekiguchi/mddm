@@ -84,4 +84,5 @@ This analyses MCMC chain(s) produced in Step 1 and obtain parameter constraints 
 * Recombination history is computed based on HyReC (https://pages.jh.edu/~yalihai1/hyrec/hyrec.html).
 
 # To-do-list 
-[ ] Restarting functionarity
+- [ ] Restarting functionarity
+- [ ] Parameter estimation of derived parameters
