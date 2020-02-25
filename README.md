@@ -24,10 +24,13 @@ Compilation is required in order to build a python interface for HyRec (written 
 # Usage
 There are two stages in the analysis: MCMC and postprocessing.
 
-## stage 1: MCMC (including calculation for fiducial model)
-Basic usage:
-`python3 driver.py test.ini`
+## Stage 1: MCMC (including calculation for fiducial model)
 
+### Basic usage:
+`python3 driver.py test.ini`
+This first calculates evolution in the fiducial model and MCMC run afterwords. MCMC chains are written in HDF5 format.
+
+### Description of input parameter file
 `test.ini` specifies a variety of parameters and consists of five sections:
 * [OUTPUT]
   - `root`: Chacters specifying output prefix.
@@ -46,7 +49,7 @@ Background evolution is computed based on iteration method using the following p
 * [LIKELIHOODS]
   - `use_BAO`,`use_H0`, `use_CMB`: Flags for whether data is incorporated in likelihood calculation. They should be either `true` of `false`
 * [MCMC]
-  - `ob`, `odm`, `ol`, `decay_rate`, `mratio`, `nnu`, `mnu`: When each parameter is varied in the parameter estimation, three numbers should be given in order: lower limit, upper limit, initial fluctuations. When left as blank, corresponding parameter is fixed to the fiducial value.
+  - `ob`, `odm`, `ol`, `decay_rate`, `mratio`, `nnu`, `mnu`: When each parameter is varied in the parameter estimation, three numbers should be given in order: lower limit, upper limit, initial fluctuations. When left as blank, corresponding parameter is fixed to the fiducial value. Comma ',' should be used to separate each item.
   - `nwalkers`: Number of walkers in affine invariant MCMC sampler. This should be at least twice the number of varied parameters.
   - `nsteps`: Number of steps for MCMC analysis
   - `parallel`: If `true`, parallelization is implemented in the MCMC calculation.
@@ -58,12 +61,21 @@ Background evolution is computed based on iteration method using the following p
 * mcmc.py: MCMC analysis based on Affine Invariant MCMC sampler (emcee). Parallelization is supported based on the multiprocessing python module.
 * driver.py: main function
 
-## stage 2: Postprocessing
-Basic usage:
+## Stage 2: Postprocessing
+
+### Basic usage:
 `python3 post.py dist.ini`
+This analyses MCMC chain(s) produced in Step 1 and obtain parameter constraints as well as triangle plot of posteior distributions.
 
+### Description of parameter files
 `dist.ini` specifies 
-
+* [POSTPROCESS]
+  - `postroot`: This specifies output prefix.
+  - `paramnames`: Array of parameter names varied in chains. Comma separates items.
+  - `paramlabels`: Array of parameter labels in LaTeX format. They are adopted in plotting. Comma separates items.
+  - `chains`: Array of chain file(s) to be analysed. Comma separates items.
+  - `chainlabels`: Array of chain label(s). They are adopted in plotting. Comma separates items.
+  
 # Notes
 ## Cosmological assumptions
 * Flatness is assumed.
