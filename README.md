@@ -32,9 +32,19 @@ Basic usage:
 * [OUTPUT]
  - `root`: chacters specifying output prefix.
 * [FIDUCIAL COSMOLOGY]
- - `ob`, `odm`, `ol`: density parameters $\Omega_ih^2$ of baryon, dark matter 
+ - `ob`, `odm`, `ol`: density parameters $\Omega_i h^2$ of baryon, dark matter (assuming no decay) and cosmological constant. Note that actual value of $\Omega_{dm} h^2$ and henceforth $h = \sqrt{\sum_i \Omega_i h^2}$ differs from the input value when decay rate is finite.
+ - `decay_rate`: decay rate of decaying dark matter in units of 1/Gyr.
+ - `mratio`: mass ratio of massive decay-product to decaying particle $m_1/m_0$.
+ - `nnu`: effective number of neutrinos. The total number of neutrinos are enhanced by this factor (temperature is fixed to the standard value i.e. $T_\nu = (4/11)^{1/3} T_\gamma$.
+ - `mnu`: sum of neutrino mass in units of eV.
+ - `neutrino_hierarchy`: flag for neutrino mass hierarchy. 1 for normal, 0 for degenerate and -1 for inverted ones.
 * [DDM SETUP]
+ -
 * [LIKELIHOODS]
+ - a
+ - `ob`, `odm`, `ol`: density parameters $\Omega_ih^2$ of baryon, dark matter and cosmological constant.a
+ - `ob`, `odm`, `ol`: density parameters $\Omega_ih^2$ of baryon, dark matter and cosmological constant.a
+ - `ob`, `odm`, `ol`: density parameters $\Omega_ih^2$ of baryon, dark matter and cosmological constant.
 * [MCMC]
 
 
