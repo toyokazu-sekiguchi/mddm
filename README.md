@@ -36,7 +36,7 @@ This first calculates evolution in the fiducial model and MCMC run afterwords. M
 * [OUTPUT]
   - `root`: Chacters specifying output prefix.
 * [FIDUCIAL COSMOLOGY]
-  - `ob`, `odm`, `ol`: Density parameters $\Omega_i h^2$ of baryon, dark matter (assuming no decay) and cosmological constant. Note that actual value of $\Omega_{dm} h^2$ and henceforth $h = \sqrt{\sum_i \Omega_i h^2}$ differs from the input value when decay rate is finite.
+  - `ob`, `odm`, `ol`: Density parameters $\Omega_i h^2$ of baryon, dark matter (assuming no decay) and cosmological constant. Note that actual value of $\Omega_{dm} h^2$ and henceforth $h = \sqrt{\sum_i \Omega_i h^2}$ differ from the input value when decay rate is finite.
   - `decay_rate`: Decay rate of decaying dark matter in units of 1/Gyr.
   - `mratio`: Mass ratio of massive decay-product to decaying particle $m_1/m_0$.
   - `nnu`: Effective number of neutrinos. The total number of neutrinos are enhanced by this factor (temperature is fixed to the standard value i.e. $T_\nu = (4/11)^{1/3} T_\gamma$.
