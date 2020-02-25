@@ -82,8 +82,8 @@ This analyses MCMC chain(s) produced in Step 1 and obtain parameter constraints 
 ## Cosmological assumptions
 * Flatness is assumed.
 * Neutrinos are assumed to consist of three mass eigenstates.
-* 4He abundance Yp(\omega_b, N_\nu) is fitted with BBN.dat taken from CLASS which are originally obtained using the PArthENoPE code (http://parthenope.na.infn.it).
-* Recombination history is computed based on HyReC (https://pages.jh.edu/~yalihai1/hyrec/hyrec.html).
+* 4He abundance $Y_p(\omega_b, N_\nu)$ is fitted with a look-up table in `BBN.dat`, whicha is taken from CLASS, which are originally obtained using the PArthENoPE code (http://parthenope.na.infn.it).
+* Recombination history is computed based on HyReC (https://pages.jh.edu/~yalihai1/hyrec/hyrec.html). Hyrec in our code is modified from the original one so that massive neutrinos are incorporated and interface to Python is realized by SWIG.
 
 # To-do list 
 - [ ] Restarting functionarity
