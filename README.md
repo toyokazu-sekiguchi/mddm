@@ -28,6 +28,7 @@ There are two stages in the analysis: MCMC and postprocessing.
 
 ### Basic usage:
 `python3 driver.py test.ini`
+
 This first calculates evolution in the fiducial model and MCMC run afterwords. MCMC chains are written in HDF5 format.
 
 ### Description of input parameter file
@@ -65,6 +66,7 @@ Background evolution is computed based on iteration method using the following p
 
 ### Basic usage:
 `python3 post.py dist.ini`
+
 This analyses MCMC chain(s) produced in Step 1 and obtain parameter constraints as well as triangle plot of posteior distributions.
 
 ### Description of parameter files
@@ -83,6 +85,6 @@ This analyses MCMC chain(s) produced in Step 1 and obtain parameter constraints 
 * 4He abundance Yp(\omega_b, N_\nu) is fitted with BBN.dat taken from CLASS which are originally obtained using the PArthENoPE code (http://parthenope.na.infn.it).
 * Recombination history is computed based on HyReC (https://pages.jh.edu/~yalihai1/hyrec/hyrec.html).
 
-# To-do-list 
+# To-do list 
 - [ ] Restarting functionarity
 - [ ] Parameter estimation of derived parameters
