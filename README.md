@@ -4,6 +4,7 @@ Code for cosmological evolution with decaying dark matter and MCMC parameter est
 # Prerequisites (vesion number usued in development)
 * Python3 (3.6, 3.7)
 * SWIG (3.0.12)
+* C compiler (gcc Apple LLVM version 10.0.1/Intel icc 18.0.1)
 
 ## Python modules
 * numpy (1.18.1)
@@ -37,6 +38,9 @@ Basic usage:
 ### roles of python files:
 * const.py: definition of units and constants
 * mdd.py: calculation of cosmological background evolution. 
+* likelihoods.py: calculation of likelihood function incorporating recent BAO (arXiv:1607.03155, arXiv:1801.03062, arXiv:1702.00176), direct Hubble measurement (arXiv:2001.03624) and CMB \Theta_* (arXiv:1807.06209).
+* mcmc.py: MCMC analysis based on Affine Invariant MCMC sampler (emcee). Parallelization is supported based on the multiprocessing python module.
+* driver.py: main function
 
 ## stage 2: Postprocessing
 Basic usage:
