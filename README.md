@@ -1,4 +1,3 @@
-日本語
 # Description
 Code for cosmological evolution with decaying dark matter and MCMC parameter estimation based on recent cosmographic data.
 
@@ -59,7 +58,7 @@ Background evolution is computed based on iteration method using the following p
 ### Role of each python file:
 * `const.py`: Definition of units and constants
 * `mdd.py`: Calculation of cosmological background evolution. 
-* `likelihoods.py`: Calculation of likelihood function incorporating recent BAO (arXiv:1607.03155, arXiv:1801.03062, arXiv:1702.00176), direct Hubble measurement (arXiv:2001.03624) and CMB \Theta_* (arXiv:1807.06209).
+* `likelihoods.py`: Calculation of likelihood function incorporating recent BAO (arXiv:1607.03155, arXiv:1801.03062, arXiv:1702.00176), direct Hubble measurement (arXiv:2001.03624) and CMB $\theta_*$ (arXiv:1807.06209).
 * `mcmc.py`: MCMC analysis based on Affine Invariant MCMC sampler (emcee). Parallelization is supported based on the multiprocessing python module.
 * `driver.py`: Main function.
 
