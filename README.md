@@ -12,6 +12,7 @@ Code for cosmological evolution with decaying dark matter and MCMC parameter est
 * h5py (2.10.0)
 * emcee (3.0.2)
 * tqdm (4.43.0)
+* configparser (4.0.2)
 * getdist (1.1.0)
 
 # Installation
