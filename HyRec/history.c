@@ -23,6 +23,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
+#include <string.h>
 
 #include "hyrectools.h"
 #include "helium.h"
@@ -178,19 +179,24 @@ double lnlamstart, dlnlam;
 void init_mnu() {
   /* Read table of massive neutrino energy density */
   
-  FILE *f = fopen(MNU_FILE, "r");
+  FILE *f;
   unsigned i;
   double lam;
+  char *buffer = (char *) malloc (1024);
+  
+  strcpy(buffer, HYRECPATH);
+  strcat(buffer, MNU_FILE);
+  f = fopen(buffer, "r");
+  free(buffer);
   
   nurho = create_1D_array(NMNU);
+  lnlamstart = log(MNU_MIN);
+  dlnlam = log(MNU_MAX/MNU_MIN)/NMNU;
   
   for (i = 0; i < NMNU; i++) {
     fscanf(f, "%le %le", &lam, &(nurho[i]));
   }
   fclose(f);
-  
-  lnlamstart = log(MNU_MIN);
-  dlnlam = log(MNU_MAX/MNU_MIN)/NMNU;
   
 }
 

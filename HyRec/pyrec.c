@@ -19,9 +19,9 @@ double logstart;
 void hyrec_init() {
 
   /* Build effective rate table */
-  char *buffer = (char *) malloc (1024);
-  getcwd (buffer, 1024);
-  chdir(HYRECPATH);
+  //char *buffer = (char *) malloc (1024);
+  //getcwd (buffer, 1024);
+  //chdir(HYRECPATH);
   rate_table.logTR_tab = create_1D_array(NTR);
   rate_table.TM_TR_tab = create_1D_array(NTM);
   rate_table.logAlpha_tab[0] = create_2D_array(NTM, NTR);
@@ -31,8 +31,8 @@ void hyrec_init() {
 
   /* Read two-photon rate tables */
   read_twog_params(&twog_params);
-  chdir(buffer);
-  free(buffer);
+  //chdir(buffer);
+  //free(buffer);
 }
 
 void rec_build_history_wrap(double tcmb, double obh2, double odmh2,
@@ -53,12 +53,12 @@ void rec_build_history_wrap(double tcmb, double obh2, double odmh2,
     param.mnu[j] = mnu[j];
   };
   if (firstTime ==0) {
-    char *buffer = (char *) malloc (1024);
-    getcwd (buffer, 1024);
-    chdir(HYRECPATH);
+    //char *buffer = (char *) malloc (1024);
+    //getcwd (buffer, 1024);
+    //chdir(HYRECPATH);
     init_mnu();
-    chdir(buffer);
-    free(buffer);
+    //chdir(buffer);
+    //free(buffer);
   }
   param.fsR = param.meR = 1.;
   rec_set_derived_params(&param);
@@ -79,7 +79,7 @@ void rec_build_history_wrap(double tcmb, double obh2, double odmh2,
   free(Dfminus_Ly_hist[0]);
   free(Dfminus_Ly_hist[1]);
   free(Dfminus_Ly_hist[2]);
-  
+
 }
 
 double hyrec_xe(double a){

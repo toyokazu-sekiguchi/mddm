@@ -1,10 +1,11 @@
 CC = gcc
 AR = ar rvs
 #CCFLAG = -O2 -DCAMB -DHYRECPATH=\"$(PWD)/\" 
-CCFLAG = -Wall -fPIC -DHYRECPATH=\"$(PWD)/\" 
+CCFLAG = -Wall -fPIC -DHYRECPATH=\"$(shell pwd -P)/\"
 LDFLAG = -O2
 
 INC_PY = -I/usr/local/Cellar/python/3.7.6_1/Frameworks/Python.framework/Versions/3.7/include/python3.7m
+#-I/home/opt/local/cores/intel/compilers_and_libraries_2018.1.163/intelpython3/include/python3.6m
 LIB_PY = -L/usr/local/Cellar/python/3.7.6_1/Frameworks/Python.framework/Versions/3.7/lib -lpython3.7m
 
 %.o: %.c 
