@@ -28,6 +28,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
+#include <string.h>
 
 #include "hyrectools.h"
 #include "hydrogen.h"
@@ -108,10 +109,17 @@ Store tabulated temperatures and read effective MLA rates from files.
 
 void read_rates(HRATEEFF *rate_table){
 
-   FILE *fA = fopen(ALPHA_FILE, "r");
-   FILE *fR = fopen(RR_FILE, "r"); 
-
+   FILE *fA, *fR;
+   char *buffer = (char *) malloc (1024);
    unsigned i, j, l;
+
+   strcpy(buffer, HYRECPATH);
+   strcat(buffer, ALPHA_FILE);
+   fA = fopen(buffer, "r");
+   strcpy(buffer, HYRECPATH);
+   strcat(buffer, RR_FILE);
+   fR = fopen(buffer, "r"); 
+   free(buffer);
 
    maketab(log(TR_MIN), log(TR_MAX), NTR, rate_table->logTR_tab);
    maketab(TM_TR_MIN, TM_TR_MAX, NTM, rate_table->TM_TR_tab);
@@ -270,10 +278,14 @@ Read two-photon rates from table and store in structure.
 void read_twog_params(TWO_PHOTON_PARAMS *twog){ 
    
    FILE *fA;
+   char *buffer = (char *) malloc (1024);
    unsigned b;
    double L2s1s_current, max_DLNA, DlnE;
 
-   fA = fopen(TWOG_FILE, "r");  
+   strcpy(buffer, HYRECPATH);
+   strcat(buffer, TWOG_FILE);
+   fA = fopen(buffer, "r");  
+   free(buffer);
 
    for (b = 0; b < NVIRT; b++) { 
       fscanf(fA, "%le", &(twog->Eb_tab[b]));
