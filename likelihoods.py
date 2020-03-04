@@ -144,8 +144,7 @@ class Likelihood:
             BG.UpdateTherm()
         
         if(self.verbose>0):
-            print("")
-            print("# likelihoods")
+            print("\n# likelihoods")
 
         lnL = [0.]
         if(self.useBAO):

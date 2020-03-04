@@ -73,7 +73,7 @@ class Background:
     
     ndim = 7
     
-    def __init__(self,num_a,max_it,tol,calcthrm,verbose=0):
+    def __init__(self,num_a,max_it,tol,verbose=0):
         self.verbose = verbose
         # default cosmological parameters
         self.og = np.pi**2/15*const.TCMB**4/(const.c*const.hbar)**3/const.rhoch2
@@ -92,9 +92,6 @@ class Background:
         self.max_it = max_it
         self.tol = tol
         
-        # recombination history
-        self.calcthrm = calcthrm
-
         # arrays
         self.arr_a = np.empty(self.num_a)
         self.arr_Gdt = np.zeros_like(self.arr_a)
@@ -126,7 +123,7 @@ class Background:
         self.yp = self.bbn.yp(self.ob,self.nu.nnu-const.nnu_standard)[0]
         
         if(self.verbose>0):
-            print('# cosmological parameters:')
+            print('\n# cosmological parameters:')
             print(' omega_g*h^2: %e'%self.og)
             print(' omega_nu*h^2 (no mass): %e'%self.onu_nomass)
             print(' omega_dm*h^2 (no decay): %e'%self.odm)
@@ -159,7 +156,7 @@ class Background:
 
         self.arr_Gt[0] = self.EarlyGt(self.a_ini)
         if(self.verbose>0):
-            print('#numerical settings for background iteratinons')
+            print('\n#numerical settings for background iteratinons')
             print(' num_a: %i'%self.num_a)
             print(' a_ini: %e, Gt_ini: %e'%(self.arr_a[0],self.arr_Gt[0]))
             print(' a_fin: %e'%self.a_fin)
@@ -212,8 +209,7 @@ class Background:
         spl2 = interpolate.make_interp_spline(self.arr_lna,np.log(self.arr_odm2))
         spl3 = interpolate.make_interp_spline(self.arr_lna,np.log(self.arr_Gt))
     
-        print('')
-        print('# a, omega_dm0, omega_dm1, omega_dm2, t[Gyr]')
+        print('\n# a, omega_dm0, omega_dm1, omega_dm2, t[Gyr]')
         for aout in arr_aout:
             lnaout = np.log(aout)
             odm0 = np.exp(spl0(lnaout))
@@ -222,8 +218,7 @@ class Background:
             t_in_Gyr = np.exp(spl3(lnaout))/(self.Gamma_in_BigH*const.BigH)/const.Gyr
             print('%e %e %e %e %e' %(aout,odm0,odm1,odm2,t_in_Gyr))
 
-        print('')
-        print('# initial density parameters')
+        print('\n# initial density parameters')
         print('  omega_dm (no decay) = %e' % self.odm)
         print('  omega_l = %e' % self.ol)
         print('  h (no decay)= %e' % np.sqrt(self.og+self.onu_nomass*np.average(self.nu.Rho(1))+self.ob+self.odm+self.ol))
@@ -258,12 +253,10 @@ class Background:
 
     def UpdateTherm(self):
         from HyRec import pyrec
-        if(not self.calcthrm):
-            sys.exit()
-
+        
         if(self.verbose>0):
             print("thermal history is computed by HyRec")
-
+            
         ok = 0
         w0 = -1
         wa = -1
@@ -278,6 +271,7 @@ class Background:
         b1 = 0.313*om**-0.419*(1+0.607*om**0.674)
         b2 = 0.238*om**0.223
         self.zdrag = 1345*om**0.251/(1+0.659*om**0.828)*(1+b1*ob**b2)
+        
         
         zstar1 = self.zstar*0.9
         zstar2 = self.zstar*1.1
@@ -302,4 +296,3 @@ class Background:
             
         self.zstar = optimize.brentq(lambda x:spl_opt(np.log(x)),zstar1,zstar2)
         self.zdrag = optimize.brentq(lambda x:spl_drag(np.log(x)),zdrag1,zdrag2)
-        

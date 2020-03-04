@@ -29,14 +29,18 @@ class MCMC():
         self.nwalkers = nwalkers
         self.verbose = verbose
         if(self.verbose>0):
-            print("")
-            print("# MCMC")
+            print("\n# MCMC")
             print(" number of walkers:",self.nwalkers)
         
     def Run(self,chainfilename,nsteps,BG,LF):
         backend = emcee.backends.HDFBackend(chainfilename)
-        backend.reset(self.nwalkers,self.nv)
-        
+        try: # restart
+            print(" number of existing steps:",backend.iteration)
+            print(" restarting from existing chains")
+        except: # new chain
+            print(" creating brand-new chains")
+            backend.reset(self.nwalkers,self.nv)
+            
         # initial condition
         p0 = np.random.randn(self.nwalkers,self.nv)
         p0[:,:] = p0[:,:]*self.rangev[None,:,2] +self.pf[None,self.mapv[:]]
@@ -56,7 +60,7 @@ class MCMC():
             import os
             
             # following classes are required to be created so that LnPost should be pickable
-            BG0 = mddm.Background(BG.num_a,BG.max_it,BG.tol,True,verbose=0)
+            BG0 = mddm.Background(BG.num_a,BG.max_it,BG.tol,verbose=0)
             LF0 = likelihoods.Likelihood(LF.useBAO,LF.useH0,LF.useCMB,verbose=0)
             MC0 = MCMC(self.pf)
             MC0.SetParams(self.mapv,self.rangev,self.nwalkers,verbose=0)

@@ -9,13 +9,12 @@ class IniFile:
         self.ini.read(fname)
         
     def Dump(self):
-        print("# inifile:")
+        print("\n# inifile:")
         sections = self.ini.sections()
         for section in sections:
             print(' ['+section+']')
             for key in self.ini[section]:
                 print(" ",key,"=",self.ini[section][key])
-        print("")
           
     def ReadBoolean(self,section,key):
         return self.ini[section].getboolean(key)
