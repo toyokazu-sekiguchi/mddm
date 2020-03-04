@@ -30,7 +30,7 @@ There are two stages in the analysis: MCMC and postprocessing.
 ### Basic usage:
 `python3 driver.py test.ini`
 
-This first calculates evolution in the fiducial model and MCMC run afterwords. MCMC chains are written in HDF5 format.
+This first calculates evolution in the fiducial model and MCMC run afterwords. MCMC chains are written in HDF5 format. MCMC tries to restart from previous chains if they exist.
 
 ### Description of input parameter file
 `test.ini` specifies a variety of parameters and consists of five sections:
@@ -60,7 +60,7 @@ Background evolution is computed based on iteration method using the following p
 * `const.py`: Definition of units and constants
 * `mdd.py`: Calculation of cosmological background evolution. 
 * `likelihoods.py`: Calculation of likelihood function incorporating recent BAO (arXiv:1607.03155, arXiv:1801.03062, arXiv:1702.00176), direct Hubble measurement (arXiv:2001.03624) and CMB $\theta_*$ (arXiv:1807.06209).
-* `mcmc.py`: MCMC analysis based on Affine Invariant MCMC sampler (emcee). Parallelization is supported based on the multiprocessing python module.
+* `mcmc.py`: MCMC analysis based on Affine Invariant MCMC sampler (emcee). Parallelization is supported based on the multiprocessing python module. Restart functionarity is supported.
 * `driver.py`: Main function.
 
 ## Stage 2: Postprocessing
