@@ -26,7 +26,7 @@ def main():
                           Ini.ReadFloat(section,"nnu"),Ini.ReadFloat(section,"mnu")])
     section = "DDM SETUP"
     BG = mddm.Background(Ini.ReadInt(section,"num_a"),Ini.ReadInt(section,"max_it"),
-                         Ini.ReadFloat(section,"tol"),True,verbose=1)
+                         Ini.ReadFloat(section,"tol"),verbose=1)
     BG.SetParams(paramsfid)
     BG.Iterate()
     
@@ -41,9 +41,9 @@ def main():
     print(" ln(L)=",lnL[:])
     
     # MCMC
-    inp = input("\nDoes everything seem going fine? Then let's run MCMC [Y/n]:")
-    if(inp=='n'):
-        sys.exit()
+    #inp = input("\nDoes everything seem going fine? Then let's run MCMC [Y/n]:")
+    #if(inp=='n'):
+    #    sys.exit()
     section ='MCMC'
     BG.verbose  = LF.verbose  = 0
     paramrange = [Ini.ReadFloatArray(section,"ob"),Ini.ReadFloatArray(section,"odm"),Ini.ReadFloatArray(section,"ol"),
