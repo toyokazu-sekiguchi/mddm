@@ -8,13 +8,22 @@ class IniFile:
         self.ini = configparser.ConfigParser()
         self.ini.read(fname)
         
-    def Dump(self):
-        print("\n# inifile:")
+    def Dump(self,fname=None):
         sections = self.ini.sections()
-        for section in sections:
-            print(' ['+section+']')
-            for key in self.ini[section]:
-                print(" ",key,"=",self.ini[section][key])
+        if(fname!=None):
+            with open(fname,mode="w") as f:
+                for section in sections:
+                    f.write(" ["+section+"]\n")
+                    for key in self.ini[section]:
+                        f.write(" "+key+" = "+str(self.ini[section][key])+"\n")
+                    f.write("\n")
+        else:
+            print("\n# inifile:")
+            for section in sections:
+                print(" ["+section+"]")
+                for key in self.ini[section]:
+                    print(" "+key+" = "+str(self.ini[section][key]))
+
           
     def ReadBoolean(self,section,key):
         return self.ini[section].getboolean(key)

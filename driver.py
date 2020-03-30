@@ -18,6 +18,7 @@ def main():
 
     section = "OUTPUT"
     root = Ini.ReadString(section,"root")
+    Ini.Dump(root+"_params.ini")
     
     # model calculation with fiducial parameters
     section = "FIDUCIAL COSMOLOGY"
@@ -37,7 +38,7 @@ def main():
     section = "LIKELIHOODS"
     LF = likelihoods.Likelihood(Ini.ReadBoolean(section,"use_BAO"),Ini.ReadBoolean(section,"use_H0"),
                                 Ini.ReadBoolean(section,"use_CMB"),verbose=1)
-    lnL = LF.LnLike(BG)
+    lnL = LF.LnLike(BG,0)
     print(" ln(L)=",lnL[:])
     
     # MCMC

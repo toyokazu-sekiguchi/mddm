@@ -139,14 +139,14 @@ class Likelihood:
         if(self.useCMB):
             self.CMB=DataCMB(self.verbose)
 
-    def LnLike(self,BG):
+    def LnLike(self,BG,lnPprior):
         if(self.useBAO or self.useCMB):
             BG.UpdateTherm()
         
         if(self.verbose>0):
             print("\n# likelihoods")
 
-        lnL = [0.]
+        lnL = [lnPprior]
         if(self.useBAO):
             self.BAO.verbose = self.verbose
             lnL_BAO = self.BAO.LnLike(BG)
@@ -164,6 +164,6 @@ class Likelihood:
             lnL_CMB = self.CMB.LnLike(BG)
             lnL.append(lnL_CMB)
             lnL[0] += lnL_CMB
-            
-        return lnL[:]
+
+        return lnL
 

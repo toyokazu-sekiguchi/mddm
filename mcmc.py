@@ -11,10 +11,15 @@ def LnPost(params_varied,*args):
         p[args[0].mapv[:]] = params_varied[:]
         args[1].SetParams(p)
         args[1].Iterate()
-        return args[2].LnLike(args[1])
+        lnp = np.sum(args[0].rangev[:,2]*np.log(params_varied[:])) # prior
+        blobs = args[2].LnLike(args[1],lnp)
+        blobs.extend(args[1].GetDerivedParams())
     else:
-        return [ -np.inf for i in range(args[0].nblobs+1)]
-    
+        blobs = [-np.inf for i in range(args[0].nblobs+1-args[1].ndparams)]
+        blobs.extend([ np.nan for i in range(args[1].ndparams)])
+
+    return (*blobs,)
+
 class MCMC():
     import time
     
@@ -40,11 +45,11 @@ class MCMC():
         except: # new chain
             print(" creating brand-new chains")
             backend.reset(self.nwalkers,self.nv)
-            
+        
         # initial condition
         p0 = np.random.randn(self.nwalkers,self.nv)
-        p0[:,:] = p0[:,:]*self.rangev[None,:,2] +self.pf[None,self.mapv[:]]
-
+        p0[:,:] = p0[:,:]*self.rangev[None,:,3] +self.pf[None,self.mapv[:]]
+        
         # metadata (derived parameters etc.)
         dtype = []
         if(LF.useBAO):
@@ -53,8 +58,10 @@ class MCMC():
             dtype.append(("lnL_H0",float))
         if(LF.useCMB):
             dtype.append(("lnL_CMB",float))
+        for i in range(BG.ndparams):
+            dtype.append((BG.dparams[i],float))
         self.nblobs = len(dtype)
-        
+
         if(self.parallel):
             from multiprocessing import Pool,cpu_count
             import os

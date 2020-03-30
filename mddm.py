@@ -87,6 +87,9 @@ class Background:
         self.bbn = BBN()
         self.yp = 0.24714 # based on PRIMAT assuming ob = 0.02236, neff = 3.046
 
+        # derived parameters
+        self.SetDerivedParams()
+
         # default binning of a
         self.num_a = num_a # >=30 usually works
         self.max_it = max_it
@@ -160,7 +163,7 @@ class Background:
             print(' num_a: %i'%self.num_a)
             print(' a_ini: %e, Gt_ini: %e'%(self.arr_a[0],self.arr_Gt[0]))
             print(' a_fin: %e'%self.a_fin)
-        
+
     def Update(self):
         self.arr_Gdt[:] = self.arr_a[:]*np.sqrt(
             self.arr_og[:]+self.arr_onu[:]+self.arr_ob[:]+self.arr_odm0[:]+self.arr_odm1[:]+self.arr_odm2[:]+self.arr_ol[:])
@@ -250,7 +253,7 @@ class Background:
     
     def SoundHorizon(self,a):
         return integrate.quad(self.drsda,0,a)[0]
-
+    
     def UpdateTherm(self):
         from HyRec import pyrec
         
@@ -296,3 +299,19 @@ class Background:
             
         self.zstar = optimize.brentq(lambda x:spl_opt(np.log(x)),zstar1,zstar2)
         self.zdrag = optimize.brentq(lambda x:spl_drag(np.log(x)),zdrag1,zdrag2)
+
+    def SetDerivedParams(self):
+        self.ndparams = 5
+        self.dparams = ["H0","Age","odm0","odm1","odm2"]
+        
+    def GetDerivedParams(self):
+        spl0 = interpolate.make_interp_spline(self.arr_lna,np.log(self.arr_odm0))
+        spl1 = interpolate.make_interp_spline(self.arr_lna,np.log(self.arr_odm1))
+        spl2 = interpolate.make_interp_spline(self.arr_lna,np.log(self.arr_odm2))
+        spl3 = interpolate.make_interp_spline(self.arr_lna,np.log(self.arr_Gt))
+        odm0 = np.exp(spl0(0))
+        odm1 = np.exp(spl1(0))
+        odm2 = np.exp(spl2(0))
+        t_in_Gyr = np.exp(spl3(0))/(self.Gamma_in_BigH*const.BigH)/const.Gyr
+        H0 = self.H0()
+        return [H0,t_in_Gyr,odm0,odm1,odm2]
