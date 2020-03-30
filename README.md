@@ -98,5 +98,4 @@ This analyses MCMC chain(s) produced in Step 1 and obtain parameter constraints 
   - Initial release.
 
 # To-do list 
-- [ ] S
-- [ ] 
+- [ ] Multiple plots with different sets of (primary and derived) parameters in different scales (e.g. linear, log, etc.).
