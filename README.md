@@ -51,7 +51,7 @@ Background evolution is computed based on iteration method using the following p
 * [LIKELIHOODS]
   - `use_BAO`,`use_H0`, `use_CMB`: Flags for whether data is incorporated in likelihood calculation. They should be either `true` of `false`
 * [MCMC]
-  - `ob`, `odm`, `ol`, `decay_rate`, `mratio`, `nnu`, `mnu`: When each parameter is varied in the parameter estimation, three numbers should be given in order: lower limit, upper limit, initial fluctuations. When left as blank, corresponding parameter is fixed to the fiducial value. Comma ',' should be used to separate each item.
+  - `ob`, `odm`, `ol`, `decay_rate`, `mratio`, `nnu`, `mnu`: When each parameter is varied in the parameter estimation, four numbers should be given in order: lower limit, upper limit, slope of prior distribution, initial fluctuations. When left as blank, corresponding parameter is fixed to the fiducial value. Commas ',' should be used to separate each item. Prior distribution of a each parameter $x$ is assumed to be in proportional to $\theta(x-x_{\rm min})\theta(x_{\rm max}-x)x^{n_x}$, where $x_{\rm min}$, $x_{\rm max}$, $n_x$ are the first three components in each line. 
   - `nwalkers`: Number of walkers in affine invariant MCMC sampler. This should be at least twice the number of varied parameters.
   - `nsteps`: Number of steps for MCMC analysis
   - `parallel`: If `true`, parallelization is implemented in the MCMC calculation.
@@ -74,10 +74,12 @@ This analyses MCMC chain(s) produced in Step 1 and obtain parameter constraints 
 `dist.ini` specifies 
 * [POSTPROCESS]
   - `postroot`: This specifies output prefix.
-  - `paramnames`: Array of parameter names varied in chains. Comma separates items.
-  - `paramlabels`: Array of parameter labels in LaTeX format. They are adopted in plotting. Comma separates items.
-  - `chains`: Array of chain file(s) to be analysed. Comma separates items.
-  - `chainlabels`: Array of chain label(s). They are adopted in plotting. Comma separates items.
+  - `paramnames`: Array of parameter names varied in chains. Commas separate items.
+  - `paramlabels`: Array of parameter labels in LaTeX format. They are adopted in plotting. Commas separate items.
+  - `dparamnames`: Array of derived parameter names in chains. Commas separate items. A Derived paraemters are either of `H0`, `Age`, `odm0`, `odm1`, `odm2`.
+  - `dparamnames`: Array of derived parameter labels in chains. They are adopted in plotting. Commas separate items.
+  - `chains`: Array of chain file(s) to be analysed. Commas separate items.
+  - `chainlabels`: Array of chain label(s). They are adopted in plotting. Commas separate items.
   
 # Notes
 * Flatness is assumed.
@@ -86,6 +88,9 @@ This analyses MCMC chain(s) produced in Step 1 and obtain parameter constraints 
 * Recombination history is computed based on HyReC (https://pages.jh.edu/~yalihai1/hyrec/hyrec.html). Hyrec in our code is modified from the original one so that massive neutrinos are incorporated and interface to Python is realized by SWIG.
 
 # Version history
+* March 30th, 2020
+  - Some derived parameters are calculated and written in chains at run-time of the MCMC stage. Slopes of prior distributions of parameters can be now specified.
+  - Postprocessing is updated. Some minor bugs are fixed. Derived parameters are now incorporated.
 * March 4nd, 2020
   - Restart functionarity is now supported.
   - HyRec wrapper is modified. In the previous version, segmentation faults occur when HyRec is located on a path which includes symbolic links. All the files for look-up tables are now referred by their physical pathes.
@@ -93,4 +98,5 @@ This analyses MCMC chain(s) produced in Step 1 and obtain parameter constraints 
   - Initial release.
 
 # To-do list 
-- [ ] Parameter estimation of derived parameters
+- [ ] S
+- [ ] 
