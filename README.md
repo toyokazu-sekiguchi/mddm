@@ -14,6 +14,7 @@ Code for cosmological evolution with decaying dark matter and MCMC parameter est
 * tqdm (4.43.0)
 * configparser (4.0.2)
 * getdist (1.1.0)
+* matplotlib (3.2.1)
 
 # Installation
 Compilation is required in order to build a python interface for HyRec (written in C).
